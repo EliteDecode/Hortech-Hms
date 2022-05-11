@@ -1,0 +1,51 @@
+:root {
+  --blue: #00c3ff;
+  --indigo: #0d0cb5;
+  --purple: #7971ea;
+  --pink: #e83e8c;
+  --red: #f23a2e;
+  --orange: #ef6c57;
+  --yellow: #f89d13;
+  --green: #8bc34a;
+  --teal: #48d494;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #f37121;
+  --secondary: #6c757d;
+  --success: #8bc34a;
+  --info: #17a2b8;
+  --warning: #f89d13;
+  --danger: #f23a2e;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  padding: 2% 3%;
+}
+
+.card h6 {
+  font-size: 12px;
+  color: var(--secondary);
+  margin: 4% 0%;
+}
+
+.card button {
+  margin: 4% 35%;
+  width: 30%;
+  font-size: 12px;
+}
+
+.container {
+  width: 80%;
+  margin: 6% 10%;
+}

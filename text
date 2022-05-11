@@ -1,0 +1,58 @@
+<?php
+                if (isset($_POST['register'])) {
+                    $firstname = $_POST['Firstname'];
+                    $lastname = $_POST['Lastname'];
+                    $username = $_POST['Username'];
+                    $gender = $_POST['Gender'];
+
+
+                    $passport = $_FILES['Passport']['name'];
+                    $tempnameImg = $_FILES["Passport"]["tmp_name"];
+                    $cv = $_FILES["Cv"]["name"];
+                    $tempnameCv = $_FILES["Cv"]["tmp_name"];
+                    $folderCv = "pdf/" . $cv;
+                    $folderImg = "images/" . $passport;
+
+                    $email = $_POST['Email'];
+                    $password = $_POST['Password'];
+                    $repassword = $_POST['Repassword'];
+
+                    $sql = "INSERT INTO `doctor` (Firstname, Lastname,Username, Gender, Doctorid, Pwd, DateReg,Stats,Salary, Cv, Passport)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+                   //preparing a prepared statement
+
+                    $stmt = mysqli_stmt_init($conn);
+                    $doctorid = 0;
+                    $date =date("jS M Y");
+                    $stats = 'pending';
+                    $salary = 0;
+
+                   mysqli_stmt_prepare($stmt, $sql);
+                   
+                  mysqli_stmt_bind_param($stmt, 'ssssissssss', $firstname, $lastname, $username, $gender, $doctorid,$password,$date,$stats,$salary,$cv,$passport);
+                  mysqli_stmt_execute($stmt);
+
+                  if (move_uploaded_file($tempnameImg, $folderImg) && move_uploaded_file($tempnameCv, $folderCv) ) {
+                    echo "Image uploaded successfully";
+                } else {
+                    echo "Failed to upload image";
+                }
+                  mysqli_stmt_close($stmt);
+
+                   echo ' <script>
+                   function hide(){
+                      var error = document.getElementById("error").style.display="none";
+                   }
+                   setTimeout("hide()", 3000)
+                   </script>
+                   
+                   <div style=" position:absolute; width:75%; margin:-5% 10% 5% 9%" id="error">
+                   <h6 class="alert alert-success text-dark" >Registration succesfull</h6></div>';
+                  
+               }
+
+              
+
+
+                
+            ?>
